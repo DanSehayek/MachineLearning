@@ -97,7 +97,7 @@ def train_neural_network(x):
     epochs = 10
 
     with tf.Session() as sess:
-        sess.run(tf.initialize_all_variables())
+        sess.run(tf.global_variables_initializer())
         for epoch in range(epochs):
             epoch_cost = 0
             for i in range(int(mnist.train.num_examples/batch_size)):
