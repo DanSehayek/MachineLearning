@@ -8,14 +8,19 @@ from nltk.stem import WordNetLemmatizer
 from collections import Counter
 
 '''
-lexicon is a list containing all of the unique words from all of our datafiles
+We have two datafiles pos.txt and neg.txt.
+These datafiles each contain 1000s of sentences.
+We would like to develop a neural network model that uses these two files
+to learn how to successfully classify positive and negative phrases.
+The purpose of this file is to generate the pickle file that TensorFlow
+will use to train the network.
+
+A lexicon is a list containing all of the unique words from all of our datafiles
+Sentences that can be stored/represented using lexicons
 lexicon = [chair,table,spoon,television]
 I pulled the chair up to the table => [1 1 0 0]
-'''
 
-'''
 We will use nltk for our natural language processing.
-We are essentially attempting to apply a neural network to our own model.
 word_tokenize just converts a sentence into a list of words/strings
 WordNetLemmatizer removes "ed" and "ing" and other redundancies and returns
 the root word
@@ -58,7 +63,7 @@ def sample_handling(sample,lexicon,classification):
     [[[0 1 0 1 1 0],[0 1]],
      [[1 0 0 1 0 1],[0 1]]]
 
-    Each list corresponds to a sentence/line.
+    Each set of lists corresponds to a sentence/line.
     The first sublist shows 0s for words that were not present and 1s for
     words that were present. The second list is [1 0] if the classification
     is positive and [0 1] if the classification is negative.
